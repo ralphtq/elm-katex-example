@@ -1,4 +1,4 @@
-module Expression exposing (Expr(..), exprListParser, parse, render, compile)
+module Expression exposing (Expr(..), compile, exprListParser, parse, render)
 
 import Html exposing (Html)
 import Html.Attributes
@@ -69,23 +69,39 @@ exprParser =
 
 textParser : Parser Expr
 textParser =
+    let
+        ignoreTextBetween ( startDelimiter, endDelimiter ) =
+            Parser.chompUntil startDelimiter
+                |. Parser.chompUntil endDelimiter
+    in
     Parser.succeed (\start end src -> Text (String.slice start end src))
         |= Parser.getOffset
-        |. Parser.chompIf (\c -> c /= '$')
-        |. Parser.chompWhile (\c -> c /= '$')
+        |. Parser.oneOf
+            [ ignoreTextBetween ( "$", "$" )
+            , ignoreTextBetween ( "~~", "~~" )
+            , ignoreTextBetween ( "\\(", "\\)" )
+            ]
         |= Parser.getOffset
         |= Parser.getSource
 
 
 inlineMathParser : Parser Expr
 inlineMathParser =
-    Parser.succeed (\start end src -> InlineMath (String.slice start (end - 1) src))
-        |. Parser.symbol "$"
-        |= Parser.getOffset
-        |. Parser.chompUntil "$"
-        |. Parser.symbol "$"
-        |= Parser.getOffset
-        |= Parser.getSource
+    let
+        maybeExtractTextBetween ( startDelimiter, endDelimiter ) =
+            Parser.succeed (\start end src -> InlineMath (String.slice start (end - 1) src))
+                |. Parser.symbol startDelimiter
+                |= Parser.getOffset
+                |. Parser.chompUntil endDelimiter
+                |. Parser.symbol endDelimiter
+                |= Parser.getOffset
+                |= Parser.getSource
+    in
+    Parser.oneOf
+        [ maybeExtractTextBetween ( "$", "$" )
+        , maybeExtractTextBetween ( "~~", "~~" )
+        , maybeExtractTextBetween ( "\\(", "\\)" )
+        ]
 
 
 displayMathParser : Parser Expr

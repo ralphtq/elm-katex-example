@@ -1,11 +1,11 @@
 module Main exposing (main)
 
-
 import Browser
 import Data
-import Html exposing (Html)
 import Expression
+import Html exposing (Html)
 import Html.Attributes
+
 
 main =
     Browser.element
@@ -22,7 +22,7 @@ subscriptions model =
 
 
 type alias Model =
-    { sourceText : String
+    { sourceTexts : List String
     }
 
 
@@ -30,20 +30,24 @@ type Msg
     = NoOp
 
 
-
 type alias Flags =
     {}
 
 
-
-initialText =
-    Data.initialText
-
+initialTexts =
+    -- Data.initialText
+    [ Data.ampere
+    , Data.quantityType
+    , Data.bohrMagneton
+    , Data.fineStructureConstant
+    , Data.coherentUnitOfSystem
+    , Data.countablyInfinite
+    ]
 
 
 init : Flags -> ( Model, Cmd Msg )
 init flags =
-    ( { sourceText = initialText
+    ( { sourceTexts = initialTexts
       }
     , Cmd.none
     )
@@ -58,6 +62,7 @@ update msg model =
 
 view : Model -> Html Msg
 view model =
-    Html.p []
-      [Expression.compile model.sourceText]
-
+    Html.div []
+        (model.sourceTexts
+            |> List.map Expression.compile
+        )
