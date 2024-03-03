@@ -86,25 +86,6 @@ textParser =
         |= Parser.getOffset
         |= Parser.getSource
 
--- textParser : Parser Expr
--- textParser =
---     Parser.succeed (\start end src -> Text (String.slice start end src))
---         |= Parser.getOffset
---         |. Parser.chompIf (\c -> c /= '$')
---         |. Parser.chompWhile (\c -> c /= '$')
---         |= Parser.getOffset
---         |= Parser.getSource
-
-
--- inlineMathParser : Parser Expr
--- inlineMathParser =
---     Parser.succeed (\start end src -> InlineMath (String.slice start (end - 1) src))
---         |. Parser.symbol "$"
---         |= Parser.getOffset
---         |. Parser.chompUntil "$"
---         |. Parser.symbol "$"
---         |= Parser.getOffset
---         |= Parser.getSource
 
 inlineMathParser : Parser Expr
 inlineMathParser =

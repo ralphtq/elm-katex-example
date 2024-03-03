@@ -38,11 +38,16 @@ initialTexts =
     -- Data.initialText
     [ Data.ampere
     , Data.avogadroConstant
-    , Data.quantityType
     , Data.bohrMagneton
-    , Data.fineStructureConstant
+    , Data.bohrRadius
     , Data.coherentUnitOfSystem
+    , Data.comptonWavelength
     , Data.countablyInfinite
+    , Data.hartreeEnergy
+    , Data.quantityKindDimensionVector
+    , Data.qkdv_A0Em1L2I0M1H0Tm2D0
+    , Data.fineStructureConstant
+    , Data.quantityType
     , Data.unit
     ]
 
@@ -65,6 +70,16 @@ update msg model =
 view : Model -> Html Msg
 view model =
     Html.div []
-        (model.sourceTexts
-            |> List.map Expression.compile
-        )
+        [ Html.h2 []
+            [ Html.text "QUDT LaTeX Rendering Tests - v2" ]
+        , Html.div []
+            (model.sourceTexts
+                |> List.map
+                    (\text ->
+                        Html.div []
+                            [ Html.hr [] []
+                            , Expression.compile text
+                            ]
+                    )
+            )
+        ]
