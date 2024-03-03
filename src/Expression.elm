@@ -71,19 +71,40 @@ textParser : Parser Expr
 textParser =
     let
         ignoreTextBetween ( startDelimiter, endDelimiter ) =
-            Parser.chompUntil startDelimiter
-                |. Parser.chompUntil endDelimiter
+            -- Parser.chompUntil startDelimiter
+            Parser.chompIf (\c -> c /= startDelimiter)
+                -- |. Parser.chompUntil endDelimiter
+                |. Parser.chompWhile (\c -> c /= endDelimiter)
     in
     Parser.succeed (\start end src -> Text (String.slice start end src))
         |= Parser.getOffset
         |. Parser.oneOf
-            [ ignoreTextBetween ( "$", "$" )
-            , ignoreTextBetween ( "~~", "~~" )
-            , ignoreTextBetween ( "\\(", "\\)" )
+            [ ignoreTextBetween ( '$', '$' )
+            -- , ignoreTextBetween ( "~~", "~~" )
+            -- , ignoreTextBetween ( "\\(", "\\)" )
             ]
         |= Parser.getOffset
         |= Parser.getSource
 
+-- textParser : Parser Expr
+-- textParser =
+--     Parser.succeed (\start end src -> Text (String.slice start end src))
+--         |= Parser.getOffset
+--         |. Parser.chompIf (\c -> c /= '$')
+--         |. Parser.chompWhile (\c -> c /= '$')
+--         |= Parser.getOffset
+--         |= Parser.getSource
+
+
+-- inlineMathParser : Parser Expr
+-- inlineMathParser =
+--     Parser.succeed (\start end src -> InlineMath (String.slice start (end - 1) src))
+--         |. Parser.symbol "$"
+--         |= Parser.getOffset
+--         |. Parser.chompUntil "$"
+--         |. Parser.symbol "$"
+--         |= Parser.getOffset
+--         |= Parser.getSource
 
 inlineMathParser : Parser Expr
 inlineMathParser =

@@ -37,11 +37,13 @@ type alias Flags =
 initialTexts =
     -- Data.initialText
     [ Data.ampere
+    , Data.avogadroConstant
     , Data.quantityType
     , Data.bohrMagneton
     , Data.fineStructureConstant
     , Data.coherentUnitOfSystem
     , Data.countablyInfinite
+    , Data.unit
     ]
 
 
