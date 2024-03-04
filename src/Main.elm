@@ -35,7 +35,7 @@ type alias Flags =
 
 
 initialTexts =
-    [ Data.ampere
+    [ Data.ampere2
     , Data.avogadroConstant
     , Data.bohrMagneton
     , Data.bohrRadius
@@ -73,7 +73,7 @@ view : Model -> Html Msg
 view model =
     Html.div []
         [ Html.h2 []
-            [ Html.text "QUDT LaTeX Rendering Tests - v2" ]
+            [ Html.text "QUDT LaTeX Rendering Tests - branch: main-rh-cusp2" ]
         , Html.div []
             (model.sourceTexts
                 |> List.map

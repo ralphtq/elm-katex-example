@@ -23,6 +23,15 @@ $\\text{A} \\equiv \\frac{\\textit{C}}{\\textit{s}}
 \\equiv \\frac{\\textit{coulomb}}{\\textit{second}} 
 \\equiv \\frac{\\text{joule}}{\\text{weber}}$
 """
+
+ampere2 =
+    """$\\text{Ampere}$, often shortened to $\\text{amp}$, 
+is the SI unit of electric current and is one of the seven SI base units defined as:
+
+$\\text{A} \\equiv \\frac{\\textit{C}}{\\textit{s}} 
+\\equiv \\frac{\\textit{coulomb}}{\\textit{second}} 
+\\equiv \\frac{\\text{joule}}{\\text{weber}}$
+"""
 avogadroConstant ="""
 $\\text{Avogadro Constant}$ is defined as:
 $L = \\frac{N}{n}$, where $N$ is the number of particles and $n$ is the amount of substance.
@@ -96,6 +105,7 @@ $\\text{Hartree Energy}$ has the symbol: $E_h\\,$ or $Ha$,
 informationContent = """
 $\\text{Information Content}\\;$ refers to the meaning of information as opposed to the form or carrier of the information.
 This is defined as:
+
 $$I(x) = \\log_{2}{\\frac{1}{p(x)}} Sh =  \\log{\\frac{1}{p(x)}} Hart = \\ln{\\frac{1}{p(x)}} nat$$
 
 where $p(x)$ is the probability of event $x$.

@@ -64,9 +64,28 @@ exprListParser =
 
 exprParser : Parser Expr
 exprParser =
-    Parser.oneOf [ displayMathParser, inlineMathParser, textParser ]
+    Parser.oneOf [ displayMathParser, inlineMathParser, textParser2 ]
 
 
+textParser2 : Parser Expr
+textParser2 =
+    let
+        ignoreTextBetween ( startDelimiter, endDelimiter ) =
+            -- Parser.chompUntil startDelimiter
+            Parser.chompIf (\c -> c /= startDelimiter)
+                -- |. Parser.chompUntil endDelimiter
+                |. Parser.chompWhile (\c -> c /= endDelimiter)
+    in
+    Parser.succeed (\start end src -> Text (String.slice (start) (end) src))
+        |= Parser.getOffset
+        |. Parser.oneOf
+            [ 
+                ignoreTextBetween ( '$', '$' )
+                --  ignoreTextBetween ( "~~", "~~" )
+            -- , ignoreTextBetween ( "\\(", "\\)" )
+            ]
+        |= Parser.getOffset
+        |= Parser.getSource
 textParser : Parser Expr
 textParser =
     let
