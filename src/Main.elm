@@ -35,8 +35,9 @@ type alias Flags =
 
 
 initialTexts =
-    [ Data.ampere2
-    , Data.avogadroConstant
+    [ 
+        -- Data.ampere
+     Data.avogadroConstant
     , Data.bohrMagneton
     , Data.bohrRadius
     , Data.coherentUnitOfSystem
@@ -81,6 +82,7 @@ view model =
                         Html.div []
                             [ Html.hr [] []
                             , Expression.compile text
+                            -- , Html.text <| Debug.toString (Expression.compile2 text)
                             ]
                     )
             )

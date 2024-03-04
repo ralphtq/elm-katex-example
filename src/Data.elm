@@ -25,13 +25,20 @@ $\\text{A} \\equiv \\frac{\\textit{C}}{\\textit{s}}
 """
 
 ampere2 =
-    """$\\text{Ampere}$, often shortened to $\\text{amp}$, 
+    """An $\\text{Ampere}$, often shortened to $\\text{amp}$, 
 is the SI unit of electric current and is one of the seven SI base units defined as:
 
 $\\text{A} \\equiv \\frac{\\textit{C}}{\\textit{s}} 
 \\equiv \\frac{\\textit{coulomb}}{\\textit{second}} 
 \\equiv \\frac{\\text{joule}}{\\text{weber}}$
 """
+
+ampere3 =
+    "An $\\text{Ampere}$, often shortened to $\\text{amp}$"
+
+ampere4 =
+    "An \\(\\text{Ampere}\\), often" -- , often shortened to " -- $\\text{amp}$"
+
 avogadroConstant ="""
 $\\text{Avogadro Constant}$ is defined as:
 $L = \\frac{N}{n}$, where $N$ is the number of particles and $n$ is the amount of substance.
