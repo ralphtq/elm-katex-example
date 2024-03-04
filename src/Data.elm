@@ -23,6 +23,10 @@ $\\text{A} \\equiv \\frac{\\textit{C}}{\\textit{s}}
 \\equiv \\frac{\\textit{coulomb}}{\\textit{second}} 
 \\equiv \\frac{\\text{joule}}{\\text{weber}}$
 """
+avogadroConstant ="""
+$\\text{Avogadro Constant}$ is defined as:
+$L = \\frac{N}{n}$, where $N$ is the number of particles and $n$ is the amount of substance.
+"""
 
 bohrMagneton =
     """
@@ -41,6 +45,13 @@ comptonWavelength = """
 $\\text{Compton Wavelength}\\;$ is defined as:
  $\\lambda_C = \\frac{h}{mc_0}$, where $h$ is the Planck constant,
  $m$ is the rest mass of a particle, and $c_0$ is the speed of light in vacuum.
+"""
+
+conditionalEntropy = """
+$\\text{Conditional Entropy}\\;$ is defined as:
+$$H(X \\mid Y) = \\sum_{i=1}^n \\sum_{j=1}^m p(x_i,y_j)I(x_i \\mid y_j)$$
+
+where $p(x_i, y_j)$ is the joint probability of events $x_i$ and $y_j$ and $I(x_i \\mid y_j)$ is the conditional information content.
 """
 fineStructureConstant =
     """
@@ -81,6 +92,22 @@ $\\text{Hartree Energy}$ has the symbol: $E_h\\,$ or $Ha$,
  
  The 2006 CODATA recommended value was $E_H = 4.35974394(22) \\times 10^{-18} J = 27.21138386(68) eV$.
 """
+
+informationContent = """
+$\\text{Information Content}\\;$ refers to the meaning of information as opposed to the form or carrier of the information.
+This is defined as:
+$$I(x) = \\log_{2}{\\frac{1}{p(x)}} Sh =  \\log{\\frac{1}{p(x)}} Hart = \\ln{\\frac{1}{p(x)}} nat$$
+
+where $p(x)$ is the probability of event $x$.
+"""
+
+irrelevance = """
+The Quantity Kind $\\text{Irrelevance}\\;$ is defined as:
+$$H(Y \\mid X) = H(X \\mid Y) + H(Y) - H(X)$$
+
+where $H(X \\mid Y)$ is equivocation and $H$ is entropy.
+"""
+
 qkdv_A0Em1L2I0M1H0Tm2D0 = """
 $\\text{Dimension Vector qkdv:A0E-1L2I0M1H0T-2D0}\\;$ is defined as:
 $m^2 \\cdot kg \\cdot s^{-2} \\cdot  A^{-1}$
@@ -109,9 +136,4 @@ For example, the meter is a quantity of length that has been rigorously defined 
 Any measurement of the length can be expressed as a number multiplied by the unit meter. 
 More formally, the value of a physical quantity Q with respect to a unit (U) is expressed as
  the scalar multiple of a real number (n) and U, as  $Q = nU$.
-"""
-
-avogadroConstant ="""
-$\\text{Avogadro Constant}$ is defined as:
-$L = \\frac{N}{n}$, where $N$ is the number of particles and $n$ is the amount of substance.
 """

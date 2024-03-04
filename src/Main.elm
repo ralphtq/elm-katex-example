@@ -35,15 +35,17 @@ type alias Flags =
 
 
 initialTexts =
-    -- Data.initialText
     [ Data.ampere
     , Data.avogadroConstant
     , Data.bohrMagneton
     , Data.bohrRadius
     , Data.coherentUnitOfSystem
     , Data.comptonWavelength
+    , Data.conditionalEntropy
     , Data.countablyInfinite
     , Data.hartreeEnergy
+    , Data.informationContent
+    , Data.irrelevance
     , Data.quantityKindDimensionVector
     , Data.qkdv_A0Em1L2I0M1H0Tm2D0
     , Data.fineStructureConstant
