@@ -5,6 +5,7 @@ import Data
 import Expression
 import Html exposing (Html)
 import Html.Attributes
+import List
 
 
 main =
@@ -35,21 +36,20 @@ type alias Flags =
 
 
 initialTexts =
-    [ 
-        -- Data.ampere
-     Data.avogadroConstant
+    [ Data.ampere
+    , Data.avogadroConstant
     , Data.bohrMagneton
     , Data.bohrRadius
     , Data.coherentUnitOfSystem
     , Data.comptonWavelength
     , Data.conditionalEntropy
     , Data.countablyInfinite
+    , Data.fineStructureConstant
     , Data.hartreeEnergy
     , Data.informationContent
     , Data.irrelevance
     , Data.quantityKindDimensionVector
     , Data.qkdv_A0Em1L2I0M1H0Tm2D0
-    , Data.fineStructureConstant
     , Data.quantityType
     , Data.unit
     ]
@@ -80,9 +80,14 @@ view model =
                 |> List.map
                     (\text ->
                         Html.div []
-                            [ Html.hr [] []
-                            , Expression.compile text
-                            -- , Html.text <| Debug.toString (Expression.compile2 text)
+                            [ Html.span []
+                                [ Expression.compile text ]
+                            , Html.div []
+                                [ Html.h3 []
+                                    [ Html.text "Raw Text:" ]
+                                , Html.p [] [ Html.text text ]
+                                , Html.hr [] []
+                                ]
                             ]
                     )
             )
